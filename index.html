@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #fff;
+            background-color: #121212;
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #1c1c1c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px 0;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+        }
+
+        .sidebar h1 {
+            color: #e63946;
+            font-size: 28px;
+            margin-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            width: 100%;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+            width: 100%;
+            text-align: left;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            gap: 10px; /* Space between icon and text */
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li a.active {
+            background-color: #e63946;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a i {
+            font-size: 20px; /* Adjust icon size */
+        }
+
+        .main {
+            margin-left: 20%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 50px;
+            justify-content: space-between;
+        }
+
+        .content {
+            margin-bottom: 50px;
+            max-width: 90%;
+        }
+
+        .content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .content span {
+            color: #e63946;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .home-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content h1{
+            font-size: 35px;
+        }
+
+        .text-content h2{
+            font-size: 25px;
+        }
+
+        .content button {
+            background-color: #e63946;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .profile-picture-container {
+            flex: 1;
+            text-align: right;
+        }
+
+        .profile-picture {
+            max-width: 220px;
+            border: 2px solid #e63946;
+            border-radius: 8px;
+        }
+
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            background: #1c1c1c;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .about-text {
+            flex: 1;
+            color: #fff;
+        }
+
+        .about-text h2 {
+            color: #e63946;
+            margin-bottom: 20px;
+        }
+
+        .about-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .about-details p {
+            font-size: 16px;
+        }
+
+        .about-buttons {
+            margin-top: 20px;
+        }
+
+        .about-buttons button {
+            background-color: #e63946;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-right: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .about-buttons button a{
+            text-decoration: none; 
+            color: #fff;   }
+
+        .skills {
+            flex: 1;
+        }
+
+        .skills .skill {
+            margin-bottom: 10px;
+        }
+
+        .skill-bar {
+            background: #333;
+            height: 10px;
+            width: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-bar span {
+            display: block;
+            height: 100%;
+            background: #e63946;
+        }
+
+        .contact-section {
+            background-color: #1c1c1c;
+            color: #fff;
+            padding: 50px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .contact-section h2 {
+            font-size: 36px;
+            color: #e63946;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .contact-info div {
+            text-align: center;
+        }
+
+        .contact-info div i {
+            font-size: 24px;
+            color: #e63946;
+            margin-bottom: 10px;
+        }
+
+        .contact-info div p {
+            font-size: 16px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background: #1c1c1c;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            background-color: #e63946;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #d62828;
+        }
+
+        .artefacts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+
+        .artefact {
+            background: #1c1c1c;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .artefact:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .artefact h4 {
+            color: #e63946;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            position: relative;
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px 0;
+          }
+      
+          /* Vertical timeline */
+          .timeline {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #fdb813, #ff5733, #c70039, #900c3f, #581845);
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-item .circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #fff;
+            border: 5px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .timeline-item:nth-child(1) .circle { border-color: #fdb813; color: #fdb813; }
+        .timeline-item:nth-child(2) .circle { border-color: #ff5733; color: #ff5733; }
+        .timeline-item:nth-child(3) .circle { border-color: #c70039; color: #c70039; }
+        .timeline-item:nth-child(4) .circle { border-color: #900c3f; color: #900c3f; }
+        .timeline-item:nth-child(5) .circle { border-color: #581845; color: #581845; }
+
+        .timeline-item h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .timeline-item p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+            max-width: 300px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            align-self: flex-start;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+        }
+      
+          /* Horizontal timeline section */
+          .horizontal-timeline {
+            display: flex;
+            overflow-x: auto;
+            margin-top: 40px;
+            padding: 10px 0;
+          }
+      
+          .horizontal-item {
+            position: relative;
+            flex: 0 0 250px;
+            padding: 20px;
+            margin-right: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+      
+          .horizontal-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+          }
+      
+          .horizontal-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #e63946;
+          }
+      
+          .horizontal-item p {
+            font-size: 0.9rem;
+            color: #757575;
+          }
+      
+          @media (max-width: 768px) {
+            .section {
+              width: 95%;
+            }
+      
+            .timeline-item {
+              flex-direction: column;
+              align-items: flex-start;
+            }
+      
+            .timeline-content {
+              margin-left: 0;
+              margin-top: 10px;
+            }
+        }
+
+
+
+        footer {
+            background-color: #1c1c1c;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>FRED*</h1>
+        <ul>
+            <li><a href="#" class="active" onclick="showSection('home')"><i class="fa-solid fa-house-user"></i>Home</a></li>
+            <li><a href="#" onclick="showSection('about')"><i class="fa-solid fa-address-card"></i>About</a></li>
+            <li><a href="#" onclick="showSection('artefacts')"><i class="fa-solid fa-shield-halved"></i>Artefacts</a></li>
+            <li><a href="#" onclick="showSection('timeline')"><i class="fa-solid fa-timeline"></i>Timeline</a></li>
+            <li><a href="#" onclick="showSection('reflection')"><i class="fa-solid fa-check-to-slot"></i>Reflection</a></li>
+            <li><a href="#" onclick="showSection('contact')"><i class="fa-solid fa-address-book"></i>Contact Me</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        <div id="home" class="content section">
+            <div class="home-content">
+                <div class="text-content">
+                    <h1>Hello, my name is <span>Fred Mutabazi</span></h1>
+                    <h2>I&#39;m a <span>Web Designer</span></h2>
+                    <p>I&#39;m a web designer with extensive experience in creating and managing websites. My expertise includes graphic design and user interface development for responsive platforms.</p>
+                    <button>More About Me</button>
+                </div>
+                <div class="profile-picture-container">
+                    <img src="ange.jpg" alt="Fred Mugisha" class="profile-picture">
+                </div>
+            </div>
+        </div>
+
+        <div id="about" class="section" style="display: none;">
+            <div class="about-section">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I&#39;m Sajid Ali and Web Developer</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae aspernatur mollitia officia rem doloremque!</p>
+                    <div class="about-details">
+                        <p>Website: www.domain.com</p>
+                        <p>Email: info@gmail.com</p>
+                        <p>Degree: CS</p>
+                        <p>Phone: +250 790855945</p>
+                        <p>City: Kigali</p>
+                    </div>
+                    <div class="about-buttons">
+                        <button><a href="link-to-resume.pdf">Download CV</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="artefacts" class="section" style="display: none;">
+            <h2>Artefacts</h2>
+            <div class="artefacts">
+                <div class="artefact">
+                    <h4>Project Plan</h4>
+                    <p>Details about a project plan I worked on.</p>
+                </div>
+                <div class="artefact">
+                    <h4>Project Plan</h4>
+                    <p>Details about a project plan I worked on.</p>
+                </div>
+                <div class="artefact">
+                    <h4>Research Paper</h4>
+                    <p>Key findings from a research paper.</p>
+                </div>
+                <div class="artefact">
+                    <h4>Field Visit Report</h4>
+                    <p>Insights gained during a field visit.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="timeline" class="section">
+            <!-- Vertical Timeline -->
+            <ul class="timeline">
+              <li class="timeline-item">
+                <div class="timeline-icon">1</div>
+                <div class="timeline-content">
+                  <p class="timeline-date">January 2023</p>
+                  <p class="timeline-description">Launched our first product to the public.</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-icon">2</div>
+                <div class="timeline-content">
+                  <p class="timeline-date">March 2023</p>
+                  <p class="timeline-description">Expanded operations to three new cities.</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-icon">3</div>
+                <div class="timeline-content">
+                  <p class="timeline-date">July 2023</p>
+                  <p class="timeline-description">Achieved 10,000+ active users on our platform.</p>
+                </div>
+              </li>
+            </ul>
+        
+            <!-- Horizontal Timeline -->
+            <div class="horizontal-timeline">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="circle">2017</div>
+                        <h3>Title Line 01</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="circle">2018</div>
+                        <h3>Title Line 02</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="circle">2019</div>
+                        <h3>Title Line 03</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="circle">2020</div>
+                        <h3>Title Line 04</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="circle">2021</div>
+                        <h3>Title Line 05</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="circle">2022</div>
+                        <h3>Title Line 06</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="reflection" class="section" style="display: none;">
+            <h2>Download Reflection Essay</h2>
+            <div class="about-buttons">
+            <button><a href="essay.pdf">Download Here</a></button>
+        </div>
+        </div>
+
+        <div id="contact" class="content section">
+            <div class="contact-section">
+                <h2>Contact Me</h2>
+                <p>Have you any questions?</p>
+                <div class="contact-info">
+                    <div>
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+250 790855945</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>44 Street, Rwanda</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>info@gmail.com</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-globe"></i>
+                        <p>Mo-designer.com</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Fred Mutabazi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            const activeSection = document.getElementById(sectionId);
+            activeSection.style.display = 'block';
+
+            // Remove 'active' class from all links
+            const links = document.querySelectorAll('.sidebar a');
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Add 'active' class to the clicked link
+            const activeLink = document.querySelector(`.sidebar a[href='#${sectionId}']`);
+            activeLink?.classList.add('active');
+        }
+
+        // Initialize by showing the home section
+        showSection('home');
+    </script>
+</body>
+</html>
